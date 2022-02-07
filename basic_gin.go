@@ -1,8 +1,19 @@
 package main
 
 import (
+	"fmt"
+	"net/http"
+
 	"github.com/gin-gonic/gin"
 )
+
+func benchEndpoint(c *gin.Context) {
+	c.String(http.StatusOK, fmt.Sprintf("benchEndpoint"))
+}
+
+func MyBenchLogger() {
+
+}
 
 //go get -u github.com/gin-gonic/gin
 func main() {
@@ -114,9 +125,13 @@ func main() {
 	// 	})
 	// }
 
-	r := gin.New()
 	//middle ware for logging errors
-	r.Use(gin.Logger())
+	// r := gin.New()
+	// r.Use(gin.Logger())
+	// r.Use(gin.Recovery())
+	// //above lines same as gin.Default()
 
-	r.Run()
+	// r.GET("/benchmark", MyBenchLogger(), benchEndpoint)
+
+	// r.Run()
 }
